@@ -1,0 +1,20 @@
+FROM node:20.11.1
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm install 
+
+RUN npm run build
+
+RUN rm -rf ./src
+
+EXPOSE 3000
+
+#npm run dev start:dev
+CMD ["npm", "run", "start:prod"]
+
+
+# build image of prod_dockerfile by run in your terminal
+# docker build -t prod-nestjs-docker -f Dockerfile.prod .
